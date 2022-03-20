@@ -77,5 +77,6 @@ func _on_AnimatedSprite_animation_finished():
 
 func damage(d):
 	health -= d
+	Global.update_health(-d)
 	if health <= 0:
 		die()

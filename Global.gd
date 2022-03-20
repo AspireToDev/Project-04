@@ -6,13 +6,17 @@ var save_file = ConfigFile.new()
 
 onready var HUD = get_node_or_null("/root/Game/UI/HUD")
 onready var Game = load("res://Game.tscn")
-onready var Level2 = load("res://Level2.tscn")
+onready var levels = [
+	load("res://Game.tscn")
+	,load("res://Level2.tscn")
+]
 
 
 var save_data = {
 	"general": {
 		"score":0
 		,"health":100
+		,"level":0
 	},
 	"player":{
 		"position_x":0,
@@ -77,6 +81,7 @@ func save_game():
 		temp["name"] = enemy.name
 		temp["health"] = enemy.health
 		save_data["enemies"].append(temp)
+	print(save_data["general"]["level"])
 	var save_game = File.new()						# create a new file object
 	save_game.open_encrypted_with_pass(SAVE_PATH, File.WRITE, SECRET)	# prep it for writing to, make sure the contents are encrypted
 	save_game.store_string(to_json(save_data))				# convert the data to a json representation and write it to the file
@@ -89,5 +94,5 @@ func load_game():
 	save_game.open_encrypted_with_pass(SAVE_PATH, File.READ, SECRET)	# The file should be encrypted
 	var contents = save_game.get_as_text()					# Get the contents of the file
 	save_data = parse_json(contents)
-	var _scene = get_tree().change_scene_to(Game)				# Load the scene
+	var _scene = get_tree().change_scene_to(levels[save_data["general"]["level"]])				# Load the scene
 	call_deferred("restart_level")						# When it's done being loaded, call the restart_level method
