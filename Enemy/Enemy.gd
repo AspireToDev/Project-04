@@ -15,7 +15,7 @@ func damage(d):
 func _on_Area2D_body_entered(body):
 	if body.has_method("damage") and body != self:
 		print("Collide")
-		body.damage(30)
+		body.damage(100)
 		die()
 func die():
 	Global.update_score(10)

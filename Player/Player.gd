@@ -70,6 +70,8 @@ func set_animation(anim):
 func die():
 	Backup.current = true
 	queue_free()
+	var reset = get_node_or_null("/root/Game/Player_Container")
+	reset._physics_process(reset.starting_position)
 
 
 func _on_AnimatedSprite_animation_finished():
