@@ -20,4 +20,4 @@ func _on_Quit_pressed():
 
 
 func _on_ToolButton_pressed():
-	get_tree().pause
+	get_tree().paused = true

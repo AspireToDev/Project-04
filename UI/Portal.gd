@@ -7,4 +7,4 @@ func _ready():
 
 func _on_Portal_body_entered(body):
 	if body.name == "Player":
-		var scene = get_tree().change_scene("res://UI/WinOne.tscn")
+		var _scene = get_tree().change_scene("res://UI/WinOne.tscn")
