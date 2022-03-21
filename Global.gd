@@ -51,7 +51,6 @@ func restart_level():
 		var player_container = get_node_or_null("/root/Game/Player_Container")
 		if player_container != null:
 			player_container.spawn(Vector2(save_data["player"]["position_x"],save_data["player"]["position_y"]))
-	save_data["enemies"] = []
 	var enemies = get_tree().get_nodes_in_group("enemy")
 	for enemy in enemies:
 		var found = false
@@ -73,6 +72,7 @@ func save_game():
 	if player != null:
 		save_data["player"]["position_x"] = player.global_position.x
 		save_data["player"]["position_y"] = player.global_position.y
+	save_data["enemies"] = []
 	var enemies = get_tree().get_nodes_in_group("enemy")
 	for enemy in enemies:
 		var temp = {}
