@@ -31,7 +31,10 @@ export var medium_attack = 20
 export var heavy_attack = 30
 export var special = 25
 
-
+func _ready():
+	Global.save_data["general"]["health"] = 100
+	Global.update_health(0)
+	
 
 func _physics_process(_delta):
 	velocity.x = clamp(velocity.x,-max_move,max_move)
@@ -71,7 +74,7 @@ func die():
 	Backup.current = true
 	queue_free()
 	var reset = get_node_or_null("/root/Game/Player_Container")
-	reset._physics_process(reset.starting_position)
+	#reset._physics_process(reset.starting_position)
 
 
 func _on_AnimatedSprite_animation_finished():
