@@ -21,7 +21,7 @@ For more information about save and load in Godot, visit the Godot documentation
 
 ## Future Development
 
-Still working on Saves, Levels, and Enemies. 
+Still working on Levels. 
 
 
 ## Created by 
